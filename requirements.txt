@@ -1,0 +1,4 @@
+# Este archivo se genera automáticamente desde Poetry
+# Para instalar dependencias, usa: poetry install
+# Para generar este archivo: poetry export -f requirements.txt --output requirements.txt
+

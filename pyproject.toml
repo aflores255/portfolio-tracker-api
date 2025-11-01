@@ -1,0 +1,133 @@
+[tool.poetry]
+name = "portfolio-tracker-api"
+version = "0.1.0"
+description = "Portfolio Tracker API - Gestor de inversiones con FastAPI, PostgreSQL y Airflow"
+authors = ["GRS Development Team <dev@grs.com>"]
+readme = "README.md"
+packages = [
+    {include = "portfolio_tracker", from = "src"}
+]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+# Core Framework
+fastapi = "^0.104.0"
+uvicorn = {extras = ["standard"], version = "^0.24.0"}
+pydantic = "^2.5.0"
+pydantic-settings = "^2.1.0"
+# Database
+sqlalchemy = "^2.0.23"
+alembic = "^1.13.0"
+psycopg2-binary = "^2.9.9"
+# Security
+python-jose = {extras = ["cryptography"], version = "^3.3.0"}
+passlib = {extras = ["bcrypt"], version = "^1.7.4"}
+python-multipart = "^0.0.6"
+# Utilities
+python-dotenv = "^1.0.0"
+httpx = "^0.25.0"
+email-validator = "^2.1.0"
+# Cache & Queue
+redis = "^5.0.0"
+# Legacy dependencies
+requests = "^2.31.0"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.4.3"
+pytest-asyncio = "^0.21.1"
+pytest-cov = "^4.1.0"
+black = "^23.11.0"
+isort = "^5.12.0"
+flake8 = "^6.1.0"
+mypy = "^1.7.1"
+pre-commit = "^3.6.0"
+factory-boy = "^3.3.0"
+faker = "^20.1.0"
+
+[tool.poetry.scripts]
+# Scripts del proyecto
+portfolio-tracker-setup = "tools.setup.initial_setup:main"
+portfolio-tracker-verify = "tools.setup.verify_structure:main"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line-length = 88
+target-version = ['py311']
+include = '\.pyi?$'
+extend-exclude = '''
+/(
+  # directories
+  \.eggs
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | build
+  | dist
+)/
+'''
+
+[tool.isort]
+profile = "black"
+multi_line_output = 3
+line_length = 88
+known_first_party = ["portfolio_tracker"]
+known_third_party = ["fastapi", "pydantic", "sqlalchemy", "alembic", "redis"]
+
+[tool.flake8]
+max-line-length = 88
+extend-ignore = ["E203", "W503"]
+exclude = [
+    ".git",
+    "__pycache__",
+    "build",
+    "dist",
+    ".venv",
+    ".mypy_cache"
+]
+
+[tool.mypy]
+python_version = "3.11"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+check_untyped_defs = true
+disallow_untyped_decorators = true
+no_implicit_optional = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+warn_no_return = true
+warn_unreachable = true
+strict_equality = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py", "*_test.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = [
+    "--cov=src",
+    "--cov-report=html",
+    "--cov-report=term-missing",
+    "--cov-fail-under=80",
+    "-v"
+]
+
+[tool.bandit]
+exclude_dirs = ["tests", "test_*"]
+skips = ["B101", "B601"]
+
+[tool.pylint]
+max-line-length = 88
+disable = [
+    "C0114",  # missing-module-docstring
+    "C0116",  # missing-function-docstring
+    "R0903",  # too-few-public-methods
+    "R0913",  # too-many-arguments
+]
+
