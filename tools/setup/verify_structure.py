@@ -13,17 +13,9 @@ def verify_structure() -> bool:
     Returns:
         True if structure is correct, False otherwise
     """
-    required_dirs = [
-        "src",
-        "tests",
-        "docs"
-    ]
+    required_dirs = ["src", "tests", "docs"]
 
-    required_files = [
-        "pyproject.toml",
-        "README.md",
-        ".gitignore"
-    ]
+    required_files = ["pyproject.toml", "README.md", ".gitignore"]
 
     errors = []
 

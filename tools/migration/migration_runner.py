@@ -35,16 +35,8 @@ def show_status() -> int:
 def main() -> int:
     """Main function for migration script."""
     parser = argparse.ArgumentParser(description="Migration manager")
-    parser.add_argument(
-        "--run",
-        action="store_true",
-        help="Run pending migrations"
-    )
-    parser.add_argument(
-        "--status",
-        action="store_true",
-        help="Show migration status"
-    )
+    parser.add_argument("--run", action="store_true", help="Run pending migrations")
+    parser.add_argument("--status", action="store_true", help="Show migration status")
 
     args = parser.parse_args()
 
