@@ -51,6 +51,7 @@ Portfolio Tracker API is a robust backend platform that allows users to manage t
 - **Poetry** (dependency manager)
 - **PostgreSQL 16** (local or Docker)
 - **Redis** (optional, for caching)
+- **Docker** (recommended for easy setup)
 - **Git**
 
 ### Installation
@@ -68,15 +69,19 @@ make install
 cp env.template .env
 # Edit .env with your configuration
 
-# 4. Start PostgreSQL (with Docker - optional)
+# 4. Start PostgreSQL with Docker (recommended)
 docker run --name portfolio-postgres \
   -e POSTGRES_PASSWORD=postgres \
   -e POSTGRES_DB=portfolio_tracker \
   -p 5432:5432 \
   -d postgres:16
 
-# 5. Apply migrations (once created - Step 2)
-make migrate
+# Verify PostgreSQL is running
+docker ps | grep postgres
+
+# 5. Generate and apply migrations
+make create-migration  # This will be your first migration
+make migrate           # Apply migrations to database
 
 # 6. Start development server
 make dev
@@ -311,12 +316,17 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for more details.
 
 ## 📋 Roadmap
 
-### Phase 1 - MVP (Current)
+### Phase 1 - MVP (In Progress - 60%)
 - [x] Base project structure
 - [x] FastAPI + SQLAlchemy setup
-- [ ] Database models
+- [x] Database models (User, Portfolio, Holding, Transaction, MarketPrice)
+- [x] Alembic migrations configured
+- [ ] PostgreSQL setup (Next: Docker)
+- [ ] Generate and apply initial migration
+- [ ] Pydantic schemas for request/response
+- [ ] Base repository with CRUD operations
 - [ ] JWT authentication system
-- [ ] Basic CRUD (users, portfolios, holdings, transactions)
+- [ ] API endpoints (users, portfolios, holdings, transactions)
 - [ ] Unit and integration tests
 - [ ] Docker Compose
 
