@@ -2,7 +2,7 @@
 name = "portfolio-tracker-api"
 version = "0.1.0"
 description = "Portfolio Tracker API - Gestor de inversiones con FastAPI, PostgreSQL y Airflow"
-authors = ["GRS Development Team <dev@grs.com>"]
+authors = ["aflores255 "]
 readme = "README.md"
 packages = [
     {include = "portfolio_tracker", from = "src"}
@@ -19,6 +19,7 @@ pydantic-settings = "^2.1.0"
 sqlalchemy = "^2.0.23"
 alembic = "^1.13.0"
 psycopg2-binary = "^2.9.9"
+asyncpg = "^0.29.0"
 # Security
 python-jose = {extras = ["cryptography"], version = "^3.3.0"}
 passlib = {extras = ["bcrypt"], version = "^1.7.4"}

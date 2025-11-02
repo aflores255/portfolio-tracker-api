@@ -194,3 +194,7 @@ airflow-webserver.pid
 *.swp
 *.swo
 
+#poetry lock
+
+*.lock
+
