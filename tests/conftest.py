@@ -14,8 +14,4 @@ def ejemplo_fixture():
 @pytest.fixture
 def config_mock():
     """Fixture con configuración de ejemplo."""
-    return {
-        "setting1": "value1",
-        "setting2": "value2"
-    }
-
+    return {"setting1": "value1", "setting2": "value2"}

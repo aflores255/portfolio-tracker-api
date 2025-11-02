@@ -17,7 +17,7 @@ settings = get_settings()
 # Create FastAPI app
 app = FastAPI(
     title=settings.APP_NAME,
-    description="API para gestión de portafolios de inversiones",
+    description=settings.APP_DESCRIPTION,
     version="0.1.0",
     docs_url=f"{settings.API_V1_PREFIX}/docs",
     redoc_url=f"{settings.API_V1_PREFIX}/redoc",

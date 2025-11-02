@@ -25,17 +25,17 @@ async def get_current_user(
 ) -> dict:
     """
     Get current authenticated user from JWT token.
-    
+
     Args:
         credentials: HTTP Bearer credentials (JWT token)
         db: Database session
-        
+
     Returns:
         dict: Current user data
-        
+
     Raises:
         HTTPException: If token is invalid or user not found
-        
+
     TODO: Implement actual JWT validation and user lookup
     """
     # Placeholder - will be implemented with authentication system
@@ -53,11 +53,11 @@ async def get_optional_current_user(
 ) -> Optional[dict]:
     """
     Get current user if authenticated, None otherwise.
-    
+
     Args:
         credentials: Optional HTTP Bearer credentials
         db: Database session
-        
+
     Returns:
         Optional[dict]: Current user data or None
     """
@@ -73,16 +73,16 @@ async def get_optional_current_user(
 def require_admin(current_user: dict = Depends(get_current_user)) -> dict:
     """
     Require current user to be an admin.
-    
+
     Args:
         current_user: Current authenticated user
-        
+
     Returns:
         dict: Current user data
-        
+
     Raises:
         HTTPException: If user is not an admin
-        
+
     TODO: Implement actual role checking
     """
     # Placeholder - will be implemented with user roles
@@ -97,7 +97,7 @@ def require_admin(current_user: dict = Depends(get_current_user)) -> dict:
 async def get_db_session() -> AsyncGenerator[AsyncSession, None]:
     """
     Alias for get_db for cleaner dependency injection.
-    
+
     Yields:
         AsyncSession: Database session
     """

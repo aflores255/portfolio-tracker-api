@@ -16,7 +16,7 @@ settings = get_settings()
 def setup_logging() -> None:
     """
     Configure application logging.
-    
+
     Sets up formatters, handlers, and log levels based on environment.
     """
     log_level = getattr(logging, settings.LOG_LEVEL.upper(), logging.INFO)
@@ -38,10 +38,10 @@ def setup_logging() -> None:
 def get_logger(name: str) -> logging.Logger:
     """
     Get a logger instance.
-    
+
     Args:
         name: Logger name (usually __name__)
-        
+
     Returns:
         logging.Logger: Configured logger instance
     """
@@ -51,7 +51,7 @@ def get_logger(name: str) -> logging.Logger:
 class LogContext:
     """
     Context manager for adding context to log messages.
-    
+
     Example:
         with LogContext(user_id=123, request_id="abc"):
             logger.info("Processing request")

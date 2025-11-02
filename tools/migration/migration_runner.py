@@ -1,5 +1,5 @@
 """
-Ejecutor de migraciones.
+Migration runner.
 """
 
 import argparse
@@ -9,41 +9,41 @@ from typing import List
 
 def run_migrations() -> int:
     """
-    Ejecutar todas las migraciones pendientes.
+    Run all pending migrations.
     
     Returns:
-        Código de salida (0 = éxito)
+        Exit code (0 = success)
     """
-    print("Ejecutando migraciones...")
-    # Aquí iría la lógica de migración
-    print("Migraciones completadas")
+    print("Running migrations...")
+    # Migration logic would go here
+    print("Migrations completed")
     return 0
 
 
 def show_status() -> int:
     """
-    Mostrar estado de las migraciones.
+    Show migration status.
     
     Returns:
-        Código de salida (0 = éxito)
+        Exit code (0 = success)
     """
-    print("Estado de migraciones:")
-    # Aquí iría la lógica de estado
+    print("Migration status:")
+    # Status logic would go here
     return 0
 
 
 def main() -> int:
-    """Función principal del script de migraciones."""
-    parser = argparse.ArgumentParser(description="Gestor de migraciones")
+    """Main function for migration script."""
+    parser = argparse.ArgumentParser(description="Migration manager")
     parser.add_argument(
         "--run",
         action="store_true",
-        help="Ejecutar migraciones pendientes"
+        help="Run pending migrations"
     )
     parser.add_argument(
         "--status",
         action="store_true",
-        help="Mostrar estado de migraciones"
+        help="Show migration status"
     )
     
     args = parser.parse_args()

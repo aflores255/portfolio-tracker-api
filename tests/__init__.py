@@ -1,4 +1,3 @@
 """
-Tests del proyecto.
+Project tests.
 """
-

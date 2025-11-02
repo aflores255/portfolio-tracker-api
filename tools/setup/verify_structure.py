@@ -1,5 +1,5 @@
 """
-Script para verificar la estructura del proyecto.
+Script to verify project structure.
 """
 
 import sys
@@ -8,10 +8,10 @@ from pathlib import Path
 
 def verify_structure() -> bool:
     """
-    Verificar que la estructura del proyecto sea correcta.
+    Verify that the project structure is correct.
     
     Returns:
-        True si la estructura es correcta, False en caso contrario
+        True if structure is correct, False otherwise
     """
     required_dirs = [
         "src",
@@ -27,36 +27,36 @@ def verify_structure() -> bool:
     
     errors = []
     
-    # Verificar directorios
+    # Verify directories
     for directory in required_dirs:
         if not Path(directory).exists():
-            errors.append(f"❌ Directorio faltante: {directory}")
+            errors.append(f"❌ Missing directory: {directory}")
         else:
-            print(f"✅ Directorio encontrado: {directory}")
+            print(f"✅ Directory found: {directory}")
     
-    # Verificar archivos
+    # Verify files
     for file in required_files:
         if not Path(file).exists():
-            errors.append(f"❌ Archivo faltante: {file}")
+            errors.append(f"❌ Missing file: {file}")
         else:
-            print(f"✅ Archivo encontrado: {file}")
+            print(f"✅ File found: {file}")
     
     if errors:
-        print("\n⚠️  Errores encontrados:")
+        print("\n⚠️  Errors found:")
         for error in errors:
             print(f"  {error}")
         return False
     
-    print("\n✨ Estructura del proyecto verificada correctamente")
+    print("\n✨ Project structure verified successfully")
     return True
 
 
 def main() -> int:
     """
-    Función principal del script de verificación.
+    Main function for verification script.
     
     Returns:
-        Código de salida (0 = éxito, 1 = error)
+        Exit code (0 = success, 1 = error)
     """
     if verify_structure():
         return 0

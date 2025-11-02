@@ -21,7 +21,7 @@ class PortfolioTrackerException(Exception):
     ) -> None:
         """
         Initialize exception.
-        
+
         Args:
             message: Human-readable error message
             code: Machine-readable error code
@@ -116,9 +116,7 @@ class NotFoundException(PortfolioTrackerException):
 class UserNotFoundException(NotFoundException):
     """Raised when user is not found."""
 
-    def __init__(
-        self, user_id: Any, details: Optional[Dict[str, Any]] = None
-    ) -> None:
+    def __init__(self, user_id: Any, details: Optional[Dict[str, Any]] = None) -> None:
         message = f"User with ID {user_id} not found"
         super().__init__(message, "USER_NOT_FOUND", details)
 
@@ -209,18 +207,14 @@ class InsufficientFundsException(BusinessLogicException):
         available: float,
         details: Optional[Dict[str, Any]] = None,
     ) -> None:
-        message = (
-            f"Insufficient funds: required {required}, available {available}"
-        )
+        message = f"Insufficient funds: required {required}, available {available}"
         super().__init__(message, "INSUFFICIENT_FUNDS", details)
 
 
 class InvalidTransactionException(BusinessLogicException):
     """Raised when transaction is invalid."""
 
-    def __init__(
-        self, message: str, details: Optional[Dict[str, Any]] = None
-    ) -> None:
+    def __init__(self, message: str, details: Optional[Dict[str, Any]] = None) -> None:
         super().__init__(message, "INVALID_TRANSACTION", details)
 
 
@@ -244,8 +238,6 @@ class ExternalServiceException(PortfolioTrackerException):
 class MarketDataUnavailableException(ExternalServiceException):
     """Raised when market data is unavailable."""
 
-    def __init__(
-        self, symbol: str, details: Optional[Dict[str, Any]] = None
-    ) -> None:
+    def __init__(self, symbol: str, details: Optional[Dict[str, Any]] = None) -> None:
         message = f"Market data unavailable for symbol: {symbol}"
         super().__init__(message, "MARKET_DATA_UNAVAILABLE", details)

@@ -1,43 +1,26 @@
 """
-Tests unitarios para el módulo principal.
+Unit tests for main module.
 """
 
 import pytest
-from src.nombre_paquete import ClasePrincipal, utilidad_principal
+
+from src.portfolio_tracker.main import app
 
 
-class TestClasePrincipal:
-    """Tests para ClasePrincipal."""
-    
-    def test_creacion_instancia(self):
-        """Test que verifica la creación de instancia."""
-        instancia = ClasePrincipal()
-        assert instancia is not None
-    
-    def test_metodo_principal(self):
-        """Test que verifica el método principal."""
-        instancia = ClasePrincipal()
-        resultado = instancia.metodo_principal()
-        assert resultado == "Funcionalidad principal ejecutada correctamente"
-    
-    def test_configurar(self):
-        """Test que verifica la configuración."""
-        instancia = ClasePrincipal()
-        config = {"key": "value"}
-        instancia.configurar(config)
-        assert instancia.obtener_configuracion() == config
+class TestApp:
+    """Tests for FastAPI application."""
 
+    def test_app_creation(self):
+        """Test that verifies app instance creation."""
+        assert app is not None
+        assert app.title == "Portfolio Tracker API"
 
-class TestUtilidadPrincipal:
-    """Tests para utilidad_principal."""
-    
-    def test_utilidad_principal_exitoso(self):
-        """Test que verifica el procesamiento exitoso."""
-        resultado = utilidad_principal("test")
-        assert resultado == "Procesado: test"
-    
-    def test_utilidad_principal_parametro_vacio(self):
-        """Test que verifica el error con parámetro vacío."""
-        with pytest.raises(ValueError):
-            utilidad_principal("")
+    def test_app_version(self):
+        """Test that verifies app version."""
+        assert app.version == "1.0.0"
 
+    def test_app_has_routes(self):
+        """Test that verifies app has routes configured."""
+        routes = [route.path for route in app.routes]
+        assert "/docs" in routes
+        assert "/openapi.json" in routes

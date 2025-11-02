@@ -1,33 +1,36 @@
 #!/usr/bin/env python3
 """
-Ejemplo básico de uso de nombre-proyecto.
+Basic usage example for Portfolio Tracker API.
 
-Este script demuestra el uso básico de las funcionalidades principales.
+This script demonstrates basic usage of main functionalities.
 """
 
-from src.nombre_paquete import ClasePrincipal, utilidad_principal
+import asyncio
+from src.portfolio_tracker.utils.helpers import generate_response, generate_error_response
 
 
-def main():
-    """Función principal del ejemplo."""
-    print("🚀 Ejemplo básico de nombre-proyecto")
+async def main():
+    """Main function for the example."""
+    print("🚀 Portfolio Tracker API - Basic Usage Example")
     
-    # Crear instancia de la clase principal
-    instancia = ClasePrincipal()
+    # Generate a standard API response
+    response = generate_response(
+        data={"message": "Hello from Portfolio Tracker!"},
+        message="Success"
+    )
+    print(f"✅ Response: {response}")
     
-    # Usar funcionalidad principal
-    resultado = instancia.metodo_principal()
-    print(f"✅ Resultado: {resultado}")
+    # Generate an error response
+    error_response = generate_error_response(
+        code="EXAMPLE_ERROR",
+        message="This is an example error",
+        field="example_field"
+    )
+    print(f"❌ Error Response: {error_response}")
     
-    # Configurar instancia
-    instancia.configurar({"ejemplo": "configuracion"})
-    print(f"📋 Configuración: {instancia.obtener_configuracion()}")
-    
-    # Usar función de utilidad
-    resultado_utilidad = utilidad_principal("test")
-    print(f"🔧 Utilidad: {resultado_utilidad}")
+    print("\n� For more examples, check the documentation at /docs")
 
 
 if __name__ == "__main__":
-    main()
+    asyncio.run(main())
 

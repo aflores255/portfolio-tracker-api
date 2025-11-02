@@ -54,10 +54,10 @@ Base = declarative_base()
 async def get_db() -> AsyncGenerator[AsyncSession, None]:
     """
     Dependency for getting async database sessions.
-    
+
     Yields:
         AsyncSession: Database session
-        
+
     Example:
         @app.get("/users")
         async def get_users(db: AsyncSession = Depends(get_db)):
@@ -78,7 +78,7 @@ async def get_db() -> AsyncGenerator[AsyncSession, None]:
 async def init_db() -> None:
     """
     Initialize database tables.
-    
+
     Creates all tables defined in Base metadata.
     Should only be used in development/testing.
     In production, use Alembic migrations.

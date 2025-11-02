@@ -1,5 +1,5 @@
 """
-Script de configuración inicial del proyecto.
+Initial project setup script.
 """
 
 import sys
@@ -8,20 +8,20 @@ from pathlib import Path
 
 def main() -> int:
     """
-    Ejecutar configuración inicial.
+    Execute initial setup.
     
     Returns:
-        Código de salida (0 = éxito)
+        Exit code (0 = success)
     """
-    print("🚀 Configuración inicial del proyecto")
+    print("🚀 Initial project setup")
     
-    # Crear directorios necesarios
+    # Create necessary directories
     directories = ["logs", "cache", "data"]
     for directory in directories:
         Path(directory).mkdir(exist_ok=True)
-        print(f"✅ Directorio creado: {directory}")
+        print(f"✅ Directory created: {directory}")
     
-    print("✨ Configuración inicial completada")
+    print("✨ Initial setup completed")
     return 0
 
 

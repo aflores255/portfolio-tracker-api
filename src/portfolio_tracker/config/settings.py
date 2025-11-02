@@ -24,6 +24,9 @@ class Settings(BaseSettings):
 
     # Application
     APP_NAME: str = Field(default="Portfolio Tracker API")
+    APP_DESCRIPTION: str = Field(
+        default="An API for tracking and managing investment portfolios."
+    )
     APP_ENV: str = Field(default="development")
     DEBUG: bool = Field(default=False)
     LOG_LEVEL: str = Field(default="INFO")
@@ -63,9 +66,7 @@ class Settings(BaseSettings):
 
     # External APIs
     ALPHA_VANTAGE_API_KEY: str = Field(default="")
-    ALPHA_VANTAGE_BASE_URL: str = Field(
-        default="https://www.alphavantage.co/query"
-    )
+    ALPHA_VANTAGE_BASE_URL: str = Field(default="https://www.alphavantage.co/query")
     YAHOOFINANCE_ENABLED: bool = Field(default=True)
 
     # Email
@@ -124,7 +125,7 @@ class Settings(BaseSettings):
 def get_settings() -> Settings:
     """
     Get cached settings instance.
-    
+
     Uses lru_cache to ensure settings are only loaded once.
     """
     return Settings()

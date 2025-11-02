@@ -16,12 +16,12 @@ def generate_response(
 ) -> Dict[str, Any]:
     """
     Generate standardized API response.
-    
+
     Args:
         data: Response data
         message: Optional message
         meta: Optional metadata
-        
+
     Returns:
         Dict: Standardized response format
     """
@@ -48,13 +48,13 @@ def generate_error_response(
 ) -> Dict[str, Any]:
     """
     Generate standardized error response.
-    
+
     Args:
         code: Error code
         message: Error message
         field: Optional field that caused error
         details: Additional error details
-        
+
     Returns:
         Dict: Standardized error response format
     """
@@ -82,11 +82,11 @@ def generate_error_response(
 def to_dict(obj: Any, exclude: Optional[list[str]] = None) -> Dict[str, Any]:
     """
     Convert SQLAlchemy model to dictionary.
-    
+
     Args:
         obj: SQLAlchemy model instance
         exclude: List of fields to exclude
-        
+
     Returns:
         Dict: Model as dictionary
     """
@@ -115,12 +115,12 @@ def paginate_query(
 ) -> tuple[int, int]:
     """
     Calculate pagination offset and limit.
-    
+
     Args:
         page: Page number (1-indexed)
         page_size: Items per page
         max_page_size: Maximum allowed page size
-        
+
     Returns:
         Tuple[int, int]: (offset, limit)
     """
@@ -143,12 +143,12 @@ def generate_pagination_meta(
 ) -> Dict[str, Any]:
     """
     Generate pagination metadata.
-    
+
     Args:
         page: Current page number
         page_size: Items per page
         total_items: Total number of items
-        
+
     Returns:
         Dict: Pagination metadata
     """

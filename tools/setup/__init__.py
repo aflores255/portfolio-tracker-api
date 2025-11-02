@@ -1,4 +1,4 @@
 """
-Herramientas de configuración inicial.
+Initial setup tools.
 """
 

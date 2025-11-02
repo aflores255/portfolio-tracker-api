@@ -1,47 +1,47 @@
 """
-Tests unitarios para utilidades.
+Unit tests for utilities.
 """
 
 import pytest
-from src.nombre_paquete.utils import exceptions
-from src.nombre_paquete.utils.helpers import (
-    chunk_list,
-    merge_dicts,
-    sanitize_string
+
+from src.portfolio_tracker.utils import exceptions
+from src.portfolio_tracker.utils.helpers import (
+    generate_error_response,
+    generate_response,
 )
 
 
 class TestHelpers:
-    """Tests para funciones auxiliares."""
-    
-    def test_sanitize_string(self):
-        """Test sanitización de strings."""
-        assert sanitize_string("  test  ") == "test"
-    
-    def test_merge_dicts(self):
-        """Test combinación de diccionarios."""
-        dict1 = {"a": 1, "b": 2}
-        dict2 = {"c": 3}
-        result = merge_dicts(dict1, dict2)
-        assert result == {"a": 1, "b": 2, "c": 3}
-    
-    def test_chunk_list(self):
-        """Test división de lista en chunks."""
-        items = [1, 2, 3, 4, 5]
-        chunks = chunk_list(items, 2)
-        assert chunks == [[1, 2], [3, 4], [5]]
+    """Tests for helper functions."""
+
+    def test_generate_response(self):
+        """Test response generation."""
+        result = generate_response(data={"test": "value"}, message="Success")
+        assert result["data"] == {"test": "value"}
+        assert result["message"] == "Success"
+        assert "meta" in result
+        assert "timestamp" in result["meta"]
+
+    def test_generate_error_response(self):
+        """Test error response generation."""
+        result = generate_error_response(
+            code="TEST_ERROR", message="Test error message", field="test_field"
+        )
+        assert result["data"] is None
+        assert len(result["errors"]) == 1
+        assert result["errors"][0]["code"] == "TEST_ERROR"
+        assert result["errors"][0]["field"] == "test_field"
 
 
 class TestExceptions:
-    """Tests para excepciones personalizadas."""
-    
-    def test_nombre_proyecto_error(self):
-        """Test excepción base."""
-        with pytest.raises(exceptions.NombreProyectoError):
-            raise exceptions.NombreProyectoError("Test error")
-    
-    def test_configuracion_error(self):
-        """Test excepción de configuración."""
-        with pytest.raises(exceptions.ConfiguracionError):
-            raise exceptions.ConfiguracionError("Config error")
+    """Tests for custom exceptions."""
 
+    def test_portfolio_tracker_exception(self):
+        """Test base exception."""
+        with pytest.raises(exceptions.PortfolioTrackerException):
+            raise exceptions.PortfolioTrackerException("Test error")
+
+    def test_validation_exception(self):
+        """Test validation exception."""
+        with pytest.raises(exceptions.ValidationException):
+            raise exceptions.ValidationException("Validation error", field="test_field")
