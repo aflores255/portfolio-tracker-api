@@ -24,7 +24,8 @@ config = context.config
 
 # Get database URL from our settings
 settings = get_settings()
-config.set_main_option("sqlalchemy.url", settings.DATABASE_URL)
+# Use sync URL for Alembic migrations (psycopg2 driver)
+config.set_main_option("sqlalchemy.url", settings.DATABASE_URL_SYNC)
 
 # Interpret the config file for Python logging.
 # This line sets up loggers basically.

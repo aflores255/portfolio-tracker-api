@@ -39,6 +39,9 @@ class Settings(BaseSettings):
 
     # Database
     DATABASE_URL: str = Field(
+        default="postgresql+asyncpg://postgres:postgres@localhost:5432/portfolio_tracker"
+    )
+    DATABASE_URL_SYNC: str = Field(
         default="postgresql://postgres:postgres@localhost:5432/portfolio_tracker"
     )
     DATABASE_ECHO: bool = Field(default=False)
