@@ -10,7 +10,7 @@ from typing import List
 def run_migrations() -> int:
     """
     Run all pending migrations.
-    
+
     Returns:
         Exit code (0 = success)
     """
@@ -23,7 +23,7 @@ def run_migrations() -> int:
 def show_status() -> int:
     """
     Show migration status.
-    
+
     Returns:
         Exit code (0 = success)
     """
@@ -45,9 +45,9 @@ def main() -> int:
         action="store_true",
         help="Show migration status"
     )
-    
+
     args = parser.parse_args()
-    
+
     if args.run:
         return run_migrations()
     elif args.status:
@@ -59,4 +59,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     sys.exit(main())
-

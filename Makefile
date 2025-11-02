@@ -41,6 +41,13 @@ lint:
 	poetry run isort --check-only src/ tests/
 	poetry run flake8 src/ tests/
 	poetry run mypy src/
+	poetry run pylint src/
+	poetry run bandit -r src/
+
+lint-fast:
+	poetry run black --check src/ tests/
+	poetry run isort --check-only src/ tests/
+	poetry run flake8 src/ tests/
 
 format:
 	poetry run black src/ tests/
